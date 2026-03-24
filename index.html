@@ -3,155 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>건설회사 성함 | We build your value</title>
+    <title>(주)대상종합건설</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* 슬라이드 효과를 위한 커스텀 CSS */
+        body { font-family: 'Noto Sans KR', sans-serif; word-break: keep-all; }
         .fade-slide { display: none; }
         .fade-slide.active { display: block; animation: fade 1.5s; }
-        @keyframes fade { from {opacity: .4} to {opacity: 1} }
-        .signature { font-family: 'Cursive', sans-serif; }
+        @keyframes fade { from {opacity: 0.4} to {opacity: 1} }
+
+        /* 슬로건 줄맞춤: PC와 모바일에서 자간을 다르게 미세조정 */
+        .slogan-top { letter-spacing: 0.05em; }
+        .slogan-bottom { letter-spacing: -0.01em; }
+        @media (min-width: 768px) {
+            .slogan-top { letter-spacing: 0.15em; }
+            .slogan-bottom { letter-spacing: 0.04em; }
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-white text-gray-800">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-sm border-b">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="text-2xl font-bold text-blue-900 tracking-tighter">CONSTRUCTION LOGO</div>
-                <div class="hidden md:flex space-x-8 font-medium">
-                    <a href="#home" class="hover:text-blue-600">Home</a>
-                    <a href="#company" class="hover:text-blue-600">Company</a>
-                    <a href="#works" class="hover:text-blue-600">Works</a>
-                    <a href="#contact" class="hover:text-blue-600">Contact</a>
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="flex justify-between h-16 md:h-20 items-center">
+                <div class="text-xl md:text-2xl font-bold text-gray-900 tracking-tight">(주)대상종합건설</div>
+                
+                <!-- 데스크탑 메뉴 -->
+                <div class="hidden md:flex space-x-10 font-bold text-sm tracking-widest">
+                    <a href="#home" class="hover:text-blue-700 transition">HOME</a>
+                    <a href="#company" class="hover:text-blue-700 transition">COMPANY</a>
+                    <a href="#works" class="hover:text-blue-700 transition">WORKS</a>
+                    <a href="#contact" class="hover:text-blue-700 transition">CONTACT</a>
+                </div>
+
+                <!-- 모바일 메뉴 버튼 -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
                 </div>
             </div>
         </div>
+
+        <!-- 모바일 드롭다운 메뉴 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b px-4 py-6 space-y-4 shadow-lg text-center font-bold">
+            <a href="#home" class="block py-2 text-gray-800 hover:text-blue-700">HOME</a>
+            <a href="#company" class="block py-2 text-gray-800 hover:text-blue-700">COMPANY</a>
+            <a href="#works" class="block py-2 text-gray-800 hover:text-blue-700">WORKS</a>
+            <a href="#contact" class="block py-2 text-gray-800 hover:text-blue-700">CONTACT</a>
+        </div>
     </nav>
 
-    <!-- 1. Home Section (Slider) -->
-    <section id="home" class="relative h-screen overflow-hidden">
-        <!-- Slides -->
+    <!-- 1. Home Section -->
+    <section id="home" class="relative h-[80vh] md:h-screen overflow-hidden">
         <div class="fade-slide active h-full">
-            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920" class="w-full h-full object-cover">
+            <img src="https://images.unsplash.com/photo-1541913057-259c9edb7931?auto=format&fit=crop&w=1920" class="w-full h-full object-cover">
         </div>
         <div class="fade-slide h-full">
             <img src="https://images.unsplash.com/photo-1503387762-592dee58c160?auto=format&fit=crop&w=1920" class="w-full h-full object-cover">
         </div>
         
-        <!-- Slogan Overlay -->
         <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
-            <div class="text-center text-white px-4">
-                <h1 class="text-4xl md:text-6xl font-light tracking-widest mb-4">We build your value,<br>We build our future.</h1>
-                <div class="w-16 h-1 bg-white mx-auto"></div>
+            <div class="text-white text-center px-6">
+                <div class="text-2xl md:text-5xl font-light mb-4 slogan-top leading-tight">We build your value</div>
+                <div class="text-2xl md:text-5xl font-light slogan-bottom leading-tight">We build our future</div>
             </div>
         </div>
     </section>
 
     <!-- 2. Company Section -->
-    <section id="company" class="py-24 bg-white">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-16 text-center text-gray-900">Company Philosophy</h2>
+    <section id="company" class="relative py-20 md:py-32 bg-fixed bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920');">
+        <div class="absolute inset-0 bg-white/90 md:bg-white/80"></div>
+        <div class="relative max-w-4xl mx-auto px-6 md:px-0">
+            <h2 class="text-xl md:text-3xl font-bold mb-12 md:mb-16 text-gray-900 leading-snug">Real value begins with<br class="md:hidden"> reasonable decisions</h2>
             
-            <div class="space-y-16 text-lg leading-relaxed text-gray-600">
+            <div class="space-y-12 md:space-y-16 text-sm md:text-lg leading-relaxed text-gray-700 text-justify md:text-left">
                 <div>
-                    <h3 class="text-2xl font-bold text-blue-900 mb-4 italic">Value</h3>
-                    <p>모든 건물은 누군가의 가치에서 시작됩니다. 하나의 건물 뒤에는 오랜 시간의 노력과 투자, 그리고 소중한 자산이 담겨 있습니다. 우리가 짓는 것은 단순한 콘크리트와 철골이 아니라 고객이 쌓아온 가치입니다...</p>
-                    <p class="mt-4">오늘 우리가 쌓아 올린 가치는 결국 우리가 함께 만들어 갈 미래가 됩니다.</p>
+                    <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4 tracking-tight">Value</h3>
+                    <p class="font-light">모든 건물은 누군가의 가치에서 시작됩니다. 하나의 건물 뒤에는 오랜 시간의 노력과 투자, 그리고 소중한 자산이 담겨 있습니다. 우리가 짓는 것은 단순한 콘크리트와 철골이 아니라 고객이 쌓아온 가치입니다...</p>
+                    <p class="mt-4 font-light italic">오늘 우리가 쌓아 올린 가치는 결국 우리가 함께 만들어 갈 미래가 됩니다.</p>
                 </div>
 
                 <div>
-                    <h3 class="text-2xl font-bold text-blue-900 mb-4 italic">Reasonable</h3>
-                    <p>그 가치를 제대로 만들기 위해서는 건설 과정의 모든 의사결정이 합리적이어야 합니다. 우리는 건설의 결과만큼이나 그 과정이 중요하다고 생각합니다. 좋은 건물은 우연히 만들어지는 것이 아니라 수많은 합리적인 판단들이 쌓여 만들어진 결과이기 때문입니다...</p>
+                    <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4 tracking-tight">Reasonability</h3>
+                    <p class="font-light">그 가치를 제대로 만들기 위해서는 건설 과정의 모든 의사결정이 합리적이어야 합니다. 우리는 건설의 결과만큼이나 그 과정이 중요하다고 생각합니다. 좋은 건물은 우연히 만들어지는 것이 아니라 수많은 합리적인 판단들이 쌓여 만들어진 결과이기 때문입니다...</p>
                 </div>
 
                 <div>
-                    <h3 class="text-2xl font-bold text-blue-900 mb-4 italic">Communication</h3>
-                    <p>우리가 생각하는 합리적인 건설은 결국 충분한 소통에서 시작됩니다. 고객과 설계사, 협력사와 열린 대화를 나누고 서로의 관점을 이해할 때 비로소 더 나은 판단에 가까워질 수 있다고 믿습니다...</p>
+                    <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4 tracking-tight">Communication</h3>
+                    <p class="font-light">우리가 생각하는 합리적인 건설은 결국 충분한 소통에서 시작됩니다. 고객과 설계사, 협력사와 열린 대화를 나누고 서로의 관점을 이해할 때 비로소 더 나은 판단에 가까워질 수 있다고 믿습니다...</p>
                 </div>
 
                 <div class="pt-10 text-right">
-                    <p class="text-xl font-medium text-gray-900">대표이사 김태민</p>
-                    <!-- 서명 이미지가 있다면 아래 주석 해제 -->
-                    <!-- <img src="signature.png" alt="signature" class="inline-block h-12"> -->
+                    <p class="text-lg md:text-xl font-bold text-gray-900 underline underline-offset-8">대표이사 김태민</p>
+                    <p class="text-xs text-gray-400 mt-4">(서명 이미지 자리)</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 3. Works Section (Grid) -->
-    <section id="works" class="py-24 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-12">Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                
-                <!-- Project Item -->
-                <div class="group relative overflow-hidden bg-gray-200 aspect-[4/3] cursor-pointer" onclick="location.href='project1.html'">
-                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <h3 class="text-white text-xl font-bold">OOO 오피스 신축공사</h3>
-                    </div>
-                </div>
+    <!-- 3. Works Section -->
+    <section id="works" class="py-20 md:py-24 bg-gray-50 text-center md:text-left">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-12 md:mb-16 border-l-0 md:border-l-4 border-gray-900 md:pl-6">
+                <h2 class="text-3xl font-bold mb-6 italic tracking-tighter">WORKS</h2>
+                <p class="max-w-3xl text-gray-600 leading-relaxed font-medium text-sm md:text-base px-4 md:px-0">
+                    (주)대상종합건설은 구조물 설치부터 일반 신축공사까지 건설의 다양한 범위를 수행할 수 있는 경험과 역량을 보유하고 있습니다.
+                    지난 십수년에 걸쳐 상업시설, 주거시설, 반도체 공장, 물류창고 등 다양한 용도의 건축물을 책임있게 완성해 왔습니다.
+                </p>
+            </div>
 
-                <!-- Project Item 2 -->
-                <div class="group relative overflow-hidden bg-gray-200 aspect-[4/3] cursor-pointer">
-                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <h3 class="text-white text-xl font-bold">XXX 물류센터 프로젝트</h3>
+            <!-- 그리드: 모바일 1열 / 태블릿 2열 / PC 3열 -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+                <a href="project-detail.html" class="group relative overflow-hidden bg-white aspect-[4/3] shadow-md">
+                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gray-900/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <h3 class="text-white text-lg font-bold">OOO 상업시설 신축공사</h3>
                     </div>
-                </div>
-
-                <!-- 추가 프로젝트는 위 코드를 복사해서 사용하세요 -->
+                </a>
+                <!-- ... 추가 프로젝트 반복 ... -->
             </div>
         </div>
     </section>
 
     <!-- 4. Contact Section -->
-    <section id="contact" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-12 text-center">Contact Us</h2>
-            <div class="grid md:grid-cols-2 gap-12">
-                <div>
-                    <div class="mb-8">
-                        <h3 class="text-lg font-bold text-blue-900 mb-2">Headquarters (본사)</h3>
-                        <p>서울특별시 무슨구 무슨길 123, 00빌딩 5층</p>
+    <section id="contact" class="py-20 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-2xl font-bold mb-12 tracking-tight">CONTACT</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+                <div class="space-y-8 text-center md:text-left">
+                    <div>
+                        <h3 class="text-xs font-bold text-gray-400 mb-2 uppercase tracking-[0.2em]">Address 1</h3>
+                        <p class="text-base md:text-lg font-medium">서울특별시 무슨구 무슨길 123, 대상빌딩 5층</p>
                     </div>
-                    <div class="mb-8">
-                        <h3 class="text-lg font-bold text-blue-900 mb-2">Branch (지사)</h3>
-                        <p>경기도 무슨시 무슨구 무슨길 456</p>
+                    <div>
+                        <h3 class="text-xs font-bold text-gray-400 mb-2 uppercase tracking-[0.2em]">Address 2</h3>
+                        <p class="text-base md:text-lg font-medium">경기도 무슨시 무슨구 무슨길 456</p>
                     </div>
-                    <div class="mb-8">
-                        <h3 class="text-lg font-bold text-blue-900 mb-2">Email</h3>
-                        <p>contact@company.com</p>
+                    <div class="pt-6 border-t border-gray-100 space-y-2">
+                        <p class="text-base md:text-lg"><span class="font-bold">E.</span> contact@daesang.com</p>
+                        <p class="text-base md:text-lg"><span class="font-bold">T.</span> 02-123-4567</p>
+                    </div>
+                    <div class="flex justify-center md:justify-start space-x-6 pt-4">
+                        <a href="#" class="text-3xl text-gray-400 hover:text-pink-600 transition"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                <div class="h-64 bg-gray-200 rounded-lg overflow-hidden">
-                    <!-- 구글 지도 Iframe (구글맵에서 공유 -> 지도 퍼오기 HTML 복사) -->
+                <div class="h-64 md:h-80 bg-gray-100 rounded shadow-inner overflow-hidden border">
                     <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-8 text-center text-gray-400 text-sm border-t">
-        <p>© 2024 Construction Company Name. All rights reserved.</p>
+    <footer class="py-12 text-center text-gray-400 text-[10px] border-t tracking-widest px-6">
+        <p>© 2024 (주)대상종합건설. ALL RIGHTS RESERVED.</p>
     </footer>
 
     <script>
-        // 간단한 슬라이드 로직
+        // 모바일 메뉴 토글 로직
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // 메뉴 클릭 시 모바일 메뉴 닫기
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => menu.classList.add('hidden'));
+        });
+
+        // 슬라이더 로직
         let slideIndex = 0;
         const slides = document.getElementsByClassName("fade-slide");
-        
         function showSlides() {
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].classList.remove("active");
-            }
+            for (let i = 0; i < slides.length; i++) { slides[i].classList.remove("active"); }
             slideIndex++;
             if (slideIndex > slides.length) {slideIndex = 1}
             slides[slideIndex-1].classList.add("active");
-            setTimeout(showSlides, 5000); // 5초마다 전환
+            setTimeout(showSlides, 5000);
         }
         showSlides();
     </script>
