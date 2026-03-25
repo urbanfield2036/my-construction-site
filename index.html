@@ -10,7 +10,7 @@
     <style>
         body { font-family: 'Noto Sans KR', sans-serif; word-break: keep-all; }
         .fade-slide { display: none; }
-        .fade-slide.active { display: block; animation: fade 1.5s; }
+        .fade-slide.active { display: block; animation: fade 2s; }
         @keyframes fade { from {opacity: 0.4} to {opacity: 1} }
 
         /* 슬로건 줄맞춤: PC와 모바일에서 자간을 다르게 미세조정 */
@@ -59,12 +59,40 @@
     <!-- 1. Home Section -->
     <section id="home" class="relative h-[80vh] md:h-screen overflow-hidden">
         <div class="fade-slide active h-full">
-            <img src="https://images.unsplash.com/photo-1541913057-259c9edb7931?auto=format&fit=crop&w=1920" class="w-full h-full object-cover">
+            <img src="./01.image/main-bg-01.jpg" class="w-full h-full object-cover">
         </div>
         <div class="fade-slide h-full">
-            <img src="https://images.unsplash.com/photo-1503387762-592dee58c160?auto=format&fit=crop&w=1920" class="w-full h-full object-cover">
+            <img src="./01.image/main-bg-01-1.jpg" class="w-full h-full object-cover">
         </div>
-        
+        <div class="fade-slide h-full">
+            <img src="./01.image/main-bg-02.jpg" class="w-full h-full object-cover">
+        </div>
+        <div class="fade-slide h-full">
+             <img src="./01.image/main-bg-03.jpg" class="w-full h-full object-cover">
+        </div>
+        <div class="fade-slide h-full">
+            <img src="./01.image/main-bg-03-1.jpg" class="w-full h-full object-cover">
+        </div>
+          <div class="fade-slide h-full">
+            <img src="./01.image/main-bg-04.jpg" class="w-full h-full object-cover">
+        </div>
+          <div class="fade-slide h-full">
+            <img src="./01.image/main-bg-04-1.jpg" class="w-full h-full object-cover">
+        </div>
+          <div class="fade-slide h-full">
+            <img src="./01.image/main-bg-05.jpg" class="w-full h-full object-cover">
+        </div>
+          <div class="fade-slide h-full">
+            <img src="./01.image/main-bg-06.jpg" class="w-full h-full object-cover">
+        </div>
+          <div class="fade-slide h-full">
+            <img src="./01.image/main-bg-07.jpg" class="w-full h-full object-cover">
+        </div>
+          <div class="fade-slide h-full">
+            <img src="./01.image/main-bg-09.jpg" class="w-full h-full object-cover">
+        </div>
+
+    <!-- 슬로건 (이 부분은 사진들 위에 항상 떠 있습니다) -->
         <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
             <div class="text-white text-center px-6">
                 <div class="text-2xl md:text-5xl font-light mb-4 slogan-top leading-tight">We build your value</div>
@@ -182,7 +210,7 @@
             slideIndex++;
             if (slideIndex > slides.length) {slideIndex = 1}
             slides[slideIndex-1].classList.add("active");
-            setTimeout(showSlides, 5000);
+            setTimeout(showSlides, 3000);
         }
         showSlides();
     </script>
