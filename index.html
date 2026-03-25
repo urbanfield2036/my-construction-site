@@ -9,69 +9,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-    /* 1. 기본 설정 및 폰트 */
-    body { 
-        font-family: 'Noto Sans KR', sans-serif; 
-        word-break: keep-all; 
-    }
+        body { font-family: 'Noto Sans KR', sans-serif; word-break: keep-all; }
+        
+        /* 슬라이드 애니메이션 */
+        .fade-slide { display: none; width: 100%; height: 100%; }
+        .fade-slide.active { display: block; animation: fade 1.2s ease-in-out; }
+        @keyframes fade { from { opacity: 0.7; } to { opacity: 1; } }
 
-    /* 2. 메인 슬라이드 애니메이션 */
-    .fade-slide { 
-        display: none; 
-        width: 100%; 
-        height: 100%; 
-    }
-    .fade-slide.active { 
-        display: block; 
-        animation: fade 1.2s ease-in-out; 
-    }
-    @keyframes fade { 
-        from { opacity: 0.5; } 
-        to { opacity: 1; } 
-    }
-
-    /* 3. 슬로건 스타일 (가장 두꺼운 900 두께 + 강력한 그림자) */
-    .slogan-top, .slogan-bottom {
-        font-weight: 900 !important; /* 신뢰감을 주는 가장 두꺼운 폰트 */
-        color: white;
-        /* 글자 뒤에 그림자를 강하게 주어 어떤 사진에서도 글씨가 뚜렷하게 보임 */
-        text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.9); 
-        line-height: 1.2;
-    }
-
-    /* 슬로건 줄맞춤 자간 설정 (위아래 길이를 맞추기 위함) */
-    /* 모바일 기준 */
-    .slogan-top { letter-spacing: 0.05em; }
-    .slogan-bottom { letter-spacing: -0.01em; }
-
-    /* PC/태블릿 기준 자간 확장 */
-    @media (min-width: 768px) {
-        .slogan-top { letter-spacing: 0.15em; }
-        .slogan-bottom { letter-spacing: 0.04em; }
-    }
-
-    /* 4. 하단 네비게이션 도트(점) 디자인 */
-    .dot {
-        transition: all 0.3s ease;
-    }
-    /* 현재 보고 있는 사진의 점은 길쭉하게 표시됨 */
-    .dot.active {
-        background-color: white !important;
-        width: 40px; 
-        border-radius: 20px;
-    }
-
-    /* 5. 좌우 화살표 호버 효과 */
-    .group:hover .group-hover\:opacity-100 {
-        opacity: 1;
-    }
-
-    /* 사진 하단에 검은 그라데이션을 살짝 깔아 글자를 더 돋보이게 함 */
-    .bg-gradient-to-t {
-        pointer-events: none;
-    }
-</style>
-    
+        /* 화살표 호버 효과 */
+        .group:hover .group-hover\:opacity-100 { opacity: 1; }
+        
+        /* 스무스 스크롤 */
+        html { scroll-behavior: smooth; }
+    </style>
 </head>
 <body class="bg-white text-gray-800">
 
@@ -98,108 +48,62 @@
             </div>
         </div>
 
-        <!-- 모바일 드롭다운 메뉴 -->
+        <!-- 모바일 드롭다운 메뉴 (클릭 시 닫히도록 처리됨) -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-b px-4 py-6 space-y-4 shadow-lg text-center font-bold">
-            <a href="#home" class="block py-2 text-gray-800 hover:text-blue-700">HOME</a>
-            <a href="#company" class="block py-2 text-gray-800 hover:text-blue-700">COMPANY</a>
-            <a href="#works" class="block py-2 text-gray-800 hover:text-blue-700">WORKS</a>
-            <a href="#contact" class="block py-2 text-gray-800 hover:text-blue-700">CONTACT</a>
+            <a href="#home" onclick="closeMenu()" class="block py-2 text-gray-800 hover:text-blue-700">HOME</a>
+            <a href="#company" onclick="closeMenu()" class="block py-2 text-gray-800 hover:text-blue-700">COMPANY</a>
+            <a href="#works" onclick="closeMenu()" class="block py-2 text-gray-800 hover:text-blue-700">WORKS</a>
+            <a href="#contact" onclick="closeMenu()" class="block py-2 text-gray-800 hover:text-blue-700">CONTACT</a>
         </div>
     </nav>
 
-    <!-- 1. Home Section (레이아웃 전면 재수정) -->
-        <section id="home" class="relative h-[70vh] md:h-[85vh] overflow-hidden bg-gray-900 group">
-        <!-- 사진 1 -->
-        <div class="fade-slide active h-full">
-            <img src="./01.image/main-bg-01.jpg" class="w-full h-full object-cover object-center">
-        </div>
-        <!-- 사진 2 -->
-        <div class="fade-slide h-full">
-            <img src="./01.image/main-bg-01-1.jpg" class="w-full h-full object-cover object-centerr">
-        </div>
-        <div class="fade-slide h-full">
-            <img src="./01.image/main-bg-02.jpg" class="w-full h-full object-cover object-center">
-        </div>
-        <div class="fade-slide h-full">
-             <img src="./01.image/main-bg-03.jpg" class="w-full h-full object-cover object-center">
-        </div>
-        <div class="fade-slide h-full">
-            <img src="./01.image/main-bg-03-1.jpg" class="w-full h-full object-cover object-center">
-        </div>
-          <div class="fade-slide h-full">
-            <img src="./01.image/main-bg-04.jpg" class="w-full h-full object-cover object-center">
-        </div>
-          <div class="fade-slide h-full">
-            <img src="./01.image/main-bg-04-1.jpg" class="w-full h-full object-cover object-center">
-        </div>
-          <div class="fade-slide h-full">
-            <img src="./01.image/main-bg-05.jpg" class="w-full h-full object-cover object-center">
-        </div>
-          <div class="fade-slide h-full">
-            <img src="./01.image/main-bg-06.jpg" class="w-full h-full object-cover object-center">
-        </div>
-          <div class="fade-slide h-full">
-            <img src="./01.image/main-bg-07.jpg" class="w-full h-full object-cover object-center">
-        </div>
-          <div class="fade-slide h-full">
-            <img src="./01.image/main-bg-09.jpg" class="w-full h-full object-cover object-center">
-        </div>
+    <!-- 1. Home Section (슬로건/도트 제거, 사진 비율 최적화) -->
+    <!-- PC: 1920x1200 비율을 유지하기 위해 aspect-[16/10] 적용 및 최대 넓이 제한 -->
+    <section id="home" class="relative pt-16 md:pt-20 bg-gray-100 group">
+        <div class="max-w-[1920px] mx-auto overflow-hidden relative h-[75vh] md:h-auto md:aspect-[16/10]">
+            <!-- 사진 리스트 (경로 그대로 유지) -->
+            <div class="fade-slide active h-full"><img src="./01.image/main-bg-01.jpg" class="w-full h-full object-contain md:object-cover object-bottom bg-gray-200"></div>
+            <div class="fade-slide h-full"><img src="./01.image/main-bg-01-1.jpg" class="w-full h-full object-contain md:object-cover object-bottom bg-gray-200"></div>
+            <div class="fade-slide h-full"><img src="./01.image/main-bg-02.jpg" class="w-full h-full object-contain md:object-cover object-bottom bg-gray-200"></div>
+            <div class="fade-slide h-full"><img src="./01.image/main-bg-03.jpg" class="w-full h-full object-contain md:object-cover object-bottom bg-gray-200"></div>
+            <div class="fade-slide h-full"><img src="./01.image/main-bg-03-1.jpg" class="w-full h-full object-contain md:object-cover object-bottom bg-gray-200"></div>
+            <div class="fade-slide h-full"><img src="./01.image/main-bg-04.jpg" class="w-full h-full object-contain md:object-cover object-bottom bg-gray-200"></div>
+            <div class="fade-slide h-full"><img src="./01.image/main-bg-04-1.jpg" class="w-full h-full object-contain md:object-cover object-bottom bg-gray-200"></div>
+            <div class="fade-slide h-full"><img src="./01.image/main-bg-05.jpg" class="w-full h-full object-contain md:object-cover object-bottom bg-gray-200"></div>
+            <div class="fade-slide h-full"><img src="./01.image/main-bg-06.jpg" class="w-full h-full object-contain md:object-cover object-bottom bg-gray-200"></div>
+            <div class="fade-slide h-full"><img src="./01.image/main-bg-07.jpg" class="w-full h-full object-contain md:object-cover object-bottom bg-gray-200"></div>
+            <div class="fade-slide h-full"><img src="./01.image/main-bg-09.jpg" class="w-full h-full object-contain md:object-cover object-bottom bg-gray-200"></div>
 
-         <!-- 좌우 화살표 (마우스 올리면 나타남) -->
-        <button onclick="plusSlides(-1)" class="absolute left-6 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/60 text-white w-12 h-12 rounded-full transition-all z-30 opacity-0 group-hover:opacity-100 hidden md:flex items-center justify-center">
-        <i class="fa-solid fa-chevron-left text-xl"></i>
-    </button>
-    <button onclick="plusSlides(1)" class="absolute right-6 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/60 text-white w-12 h-12 rounded-full transition-all z-30 opacity-0 group-hover:opacity-100 hidden md:flex items-center justify-center">
-        <i class="fa-solid fa-chevron-right text-xl"></i>
-    </button>
-
-    <!-- 슬로건 (하단 1/4 지점으로 명확히 이동: bottom-[25%]) -->
-    <div class="absolute bottom-[25%] left-0 w-full text-center z-20 px-6">
-        <div class="inline-block">
-            <h1 class="text-3xl md:text-6xl font-black text-white leading-tight mb-2 md:mb-4 tracking-wider custom-shadow slogan-top">
-                We build your value
-            </h1>
-            <h1 class="text-3xl md:text-6xl font-black text-white leading-tight tracking-wider custom-shadow slogan-bottom">
-                We build our future
-            </h1>
+            <!-- 좌우 화살표 (모바일에서도 보이게 수정) -->
+            <button onclick="plusSlides(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/50 text-white w-10 h-10 md:w-14 md:h-14 rounded-full transition-all z-30 flex items-center justify-center">
+                <i class="fa-solid fa-chevron-left md:text-2xl"></i>
+            </button>
+            <button onclick="plusSlides(1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/50 text-white w-10 h-10 md:w-14 md:h-14 rounded-full transition-all z-30 flex items-center justify-center">
+                <i class="fa-solid fa-chevron-right md:text-2xl"></i>
+            </button>
         </div>
-    </div>
+    </section>
 
-    <!-- 하단 도트(점) (슬로건과 분리하여 맨 하단에 배치) -->
-    <div class="absolute bottom-10 left-0 w-full flex justify-center space-x-3 z-30">
-        <span onclick="currentSlide(1)" class="dot w-3 h-3 rounded-full bg-white/30 cursor-pointer hover:bg-white transition-all"></span>
-        <span onclick="currentSlide(2)" class="dot w-3 h-3 rounded-full bg-white/30 cursor-pointer hover:bg-white transition-all"></span>
-        <span onclick="currentSlide(3)" class="dot w-3 h-3 rounded-full bg-white/30 cursor-pointer hover:bg-white transition-all"></span>
-    </div>
-
-    <!-- 하단 그라데이션 (사진 하단부를 살짝 어둡게 해서 글자를 더 잘 보이게 함) -->
-    <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
-</section>
-
-    
     <!-- 2. Company Section -->
     <section id="company" class="relative py-20 md:py-32 bg-fixed bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920');">
         <div class="absolute inset-0 bg-white/90 md:bg-white/80"></div>
         <div class="relative max-w-4xl mx-auto px-6 md:px-0">
-            <h2 class="text-xl md:text-3xl font-bold mb-12 md:mb-16 text-gray-900 leading-snug">Real value begins with<br class="md:hidden"> reasonable decisions</h2>
+            <h2 class="text-xl md:text-3xl font-bold mb-12 md:mb-16 text-gray-900 leading-snug tracking-tight">Real value begins with<br class="md:hidden"> reasonable decisions</h2>
             
             <div class="space-y-12 md:space-y-16 text-sm md:text-lg leading-relaxed text-gray-700 text-justify md:text-left">
                 <div>
                     <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4 tracking-tight">Value</h3>
-                    <p class="font-light">모든 건물은 누군가의 가치에서 시작됩니다. 하나의 건물 뒤에는 오랜 시간의 노력과 투자, 그리고 소중한 자산이 담겨 있습니다. 우리가 짓는 것은 단순한 콘크리트와 철골이 아니라 고객이 쌓아온 가치입니다...</p>
-                    <p class="mt-4 font-light italic">오늘 우리가 쌓아 올린 가치는 결국 우리가 함께 만들어 갈 미래가 됩니다.</p>
+                    <p class="font-light italic">"모든 건물은 누군가의 가치에서 시작됩니다. 하나의 건물 뒤에는 오랜 시간의 노력과 투자, 그리고 소중한 자산이 담겨 있습니다. 우리가 짓는 것은 단순한 콘크리트와 철골이 아니라 고객이 쌓아온 가치입니다..."</p>
+                    <p class="mt-4 font-light">오늘 우리가 쌓아 올린 가치는 결국 우리가 함께 만들어 갈 미래가 됩니다.</p>
                 </div>
-
                 <div>
                     <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4 tracking-tight">Reasonability</h3>
                     <p class="font-light">그 가치를 제대로 만들기 위해서는 건설 과정의 모든 의사결정이 합리적이어야 합니다. 우리는 건설의 결과만큼이나 그 과정이 중요하다고 생각합니다. 좋은 건물은 우연히 만들어지는 것이 아니라 수많은 합리적인 판단들이 쌓여 만들어진 결과이기 때문입니다...</p>
                 </div>
-
                 <div>
                     <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4 tracking-tight">Communication</h3>
                     <p class="font-light">우리가 생각하는 합리적인 건설은 결국 충분한 소통에서 시작됩니다. 고객과 설계사, 협력사와 열린 대화를 나누고 서로의 관점을 이해할 때 비로소 더 나은 판단에 가까워질 수 있다고 믿습니다...</p>
                 </div>
-
                 <div class="pt-10 text-right">
                     <p class="text-lg md:text-xl font-bold text-gray-900 underline underline-offset-8">대표이사 김태민</p>
                     <p class="text-xs text-gray-400 mt-4">(서명 이미지 자리)</p>
@@ -209,17 +113,15 @@
     </section>
 
     <!-- 3. Works Section -->
-    <section id="works" class="py-20 md:py-24 bg-gray-50 text-center md:text-left">
+    <section id="works" class="py-20 md:py-24 bg-gray-50">
         <div class="max-w-7xl mx-auto px-6">
             <div class="mb-12 md:mb-16 border-l-0 md:border-l-4 border-gray-900 md:pl-6">
                 <h2 class="text-3xl font-bold mb-6 italic tracking-tighter">WORKS</h2>
-                <p class="max-w-3xl text-gray-600 leading-relaxed font-medium text-sm md:text-base px-4 md:px-0">
-                    (주)대상종합건설은 구조물 설치부터 일반 신축공사까지 건설의 다양한 범위를 수행할 수 있는 경험과 역량을 보유하고 있습니다.
+                <p class="max-w-3xl text-gray-600 leading-relaxed font-medium text-sm md:text-base">
+                    (주)대상종합건설은 구조물 설치부터 일반 신축공사까지 건설의 다양한 범위를 수행할 수 있는 경험과 역량을 보유하고 있습니다.<br class="hidden md:block">
                     지난 십수년에 걸쳐 상업시설, 주거시설, 반도체 공장, 물류창고 등 다양한 용도의 건축물을 책임있게 완성해 왔습니다.
                 </p>
             </div>
-
-            <!-- 그리드: 모바일 1열 / 태블릿 2열 / PC 3열 -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
                 <a href="works.html" class="group relative overflow-hidden bg-white aspect-[4/3] shadow-md">
                     <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
@@ -227,106 +129,94 @@
                         <h3 class="text-white text-lg font-bold">OOO 상업시설 신축공사</h3>
                     </div>
                 </a>
-                <!-- ... 추가 프로젝트 반복 ... -->
             </div>
         </div>
     </section>
 
-    <!-- 4. Contact Section -->
-    <section id="contact" class="py-20 md:py-24 bg-white">
+    <!-- 4. Contact Section (지도 제거) -->
+    <section id="contact" class="py-20 md:py-24 bg-white border-t">
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="text-2xl font-bold mb-12 tracking-tight">CONTACT</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
-                <div class="space-y-8 text-center md:text-left">
-                    <div>
-                        <h3 class="text-xs font-bold text-gray-400 mb-2 uppercase tracking-[0.2em]">Address 1</h3>
-                        <p class="text-base md:text-lg font-medium">서울특별시 무슨구 무슨길 123, 대상빌딩 5층</p>
+            <div class="max-w-2xl">
+                <div class="space-y-10">
+                    <div class="flex flex-col md:flex-row md:items-start">
+                        <h3 class="w-32 text-xs font-bold text-gray-400 mb-2 md:mb-0 uppercase tracking-[0.2em]">Address 1</h3>
+                        <p class="text-base md:text-xl font-medium">서울특별시 무슨구 무슨길 123, 대상빌딩 5층</p>
                     </div>
-                    <div>
-                        <h3 class="text-xs font-bold text-gray-400 mb-2 uppercase tracking-[0.2em]">Address 2</h3>
-                        <p class="text-base md:text-lg font-medium">경기도 무슨시 무슨구 무슨길 456</p>
+                    <div class="flex flex-col md:flex-row md:items-start border-t pt-8">
+                        <h3 class="w-32 text-xs font-bold text-gray-400 mb-2 md:mb-0 uppercase tracking-[0.2em]">Address 2</h3>
+                        <p class="text-base md:text-xl font-medium">경기도 무슨시 무슨구 무슨길 456</p>
                     </div>
-                    <div class="pt-6 border-t border-gray-100 space-y-2">
-                        <p class="text-base md:text-lg"><span class="font-bold">E.</span> contact@daesang.com</p>
-                        <p class="text-base md:text-lg"><span class="font-bold">T.</span> 02-123-4567</p>
+                    <div class="pt-8 border-t border-gray-100 space-y-4">
+                        <p class="text-lg md:text-2xl"><span class="font-bold text-gray-400 mr-4">E.</span> contact@daesang.com</p>
+                        <p class="text-lg md:text-2xl"><span class="font-bold text-gray-400 mr-4">T.</span> 02-123-4567</p>
                     </div>
-                    <div class="flex justify-center md:justify-start space-x-6 pt-4">
+                    <div class="flex space-x-6 pt-4">
                         <a href="#" class="text-3xl text-gray-400 hover:text-pink-600 transition"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                <div class="h-64 md:h-80 bg-gray-100 rounded shadow-inner overflow-hidden border">
-                    <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-12 text-center text-gray-400 text-[10px] border-t tracking-widest px-6">
+    <footer class="py-12 text-center text-gray-400 text-[10px] border-t tracking-widest px-6 bg-gray-50">
         <p>© 2024 (주)대상종합건설. ALL RIGHTS RESERVED.</p>
     </footer>
 
-   <!-- 자바스크립트 수정 (기존 스크립트 삭제 후 이 내용으로 교체) -->
 <script>
-    // 모바일 메뉴 토글
+    // 1. 모바일 메뉴 토글 및 닫기 로직
     const btn = document.getElementById('mobile-menu-button');
     const menu = document.getElementById('mobile-menu');
-    btn.addEventListener('click', () => { menu.classList.toggle('hidden'); });
+    
+    btn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+    });
 
-    // 슬라이더 로직
+    function closeMenu() {
+        menu.classList.add('hidden');
+    }
+
+    // 2. 슬라이더 로직 (점 제거 버전)
     let slideIndex = 1;
     let slideTimer;
 
-    showSlides(slideIndex);
-    autoSlide(); // 자동 슬라이드 시작
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("fade-slide");
+        
+        if (n > slides.length) { slideIndex = 1; }    
+        if (n < 1) { slideIndex = slides.length; }
+        
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+            slides[i].classList.remove("active");
+        }
+        
+        slides[slideIndex-1].style.display = "block";  
+        setTimeout(() => {
+            slides[slideIndex-1].classList.add("active");
+        }, 10);
+    }
 
-    // 다음/이전 컨트롤
     function plusSlides(n) {
         showSlides(slideIndex += n);
         resetTimer();
     }
 
-    // 특정 이미지로 이동
-    function currentSlide(n) {
-        showSlides(slideIndex = n);
-        resetTimer();
-    }
-
-    function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("fade-slide");
-    let dots = document.getElementsByClassName("dot");
-    
-    if (n > slides.length) {slideIndex = 1}    
-    if (n < 1) {slideIndex = slides.length}
-    
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";  
-        slides[i].classList.remove("active");
-    }
-    for (i = 0; i < dots.length; i++) {
-        dots[i].classList.remove("active");
-    }
-    
-    slides[slideIndex-1].style.display = "block";  
-    // 0.01초 뒤에 클래스를 추가해야 애니메이션이 먹힙니다.
-    setTimeout(() => {
-        slides[slideIndex-1].classList.add("active");
-    }, 10);
-    dots[slideIndex-1].classList.add("active");
-}
-
-    // 자동 슬라이드 함수
     function autoSlide() {
         slideTimer = setInterval(() => {
             plusSlides(1);
-        }, 5000); // 5초마다 전환
+        }, 5000);
     }
 
-    // 수동 조작 시 타이머 리셋 (사용자가 넘기자마자 자동으로 또 넘어가는 것 방지)
     function resetTimer() {
         clearInterval(slideTimer);
         autoSlide();
     }
+
+    // 초기 실행
+    showSlides(slideIndex);
+    autoSlide();
 </script>
 </body>
 </html>
