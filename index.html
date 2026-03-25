@@ -1,222 +1,276 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>(주)대상종합건설</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <style>
-        body { font-family: 'Noto Sans KR', sans-serif; word-break: keep-all; }
-        
-        /* 슬라이드 애니메이션 */
-        .fade-slide { display: none; width: 100%; height: 100%; }
-        .fade-slide.active { display: block; animation: fade 1.2s ease-in-out; }
-        @keyframes fade { from { opacity: 0.7; } to { opacity: 1; } }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        /* 화살표 호버 효과 */
-        .group:hover .group-hover\:opacity-100 { opacity: 1; }
-        
-        /* 스무스 스크롤 */
-        html { scroll-behavior: smooth; }
-    </style>
+<title>(주)대상종합건설</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+
+body{
+font-family:'Noto Sans KR',sans-serif;
+margin:0;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+.fade-slide{
+position:absolute;
+width:100%;
+height:100%;
+top:0;
+left:0;
+opacity:0;
+transition:opacity 1.2s;
+}
+
+.fade-slide.active{
+opacity:1;
+z-index:1;
+}
+
+nav{
+transition:all .3s;
+}
+
+.nav-scrolled{
+background:rgba(255,255,255,0.9);
+backdrop-filter:blur(6px);
+}
+
+</style>
+
 </head>
-<body class="bg-white text-gray-800">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 md:px-8">
-            <div class="flex justify-between h-16 md:h-20 items-center">
-                <div class="text-xl md:text-2xl font-bold text-gray-900 tracking-tight">(주)대상종합건설</div>
-                
-                <!-- 데스크탑 메뉴 -->
-                <div class="hidden md:flex space-x-10 font-bold text-sm tracking-widest">
-                    <a href="#home" class="hover:text-blue-700 transition">HOME</a>
-                    <a href="#company" class="hover:text-blue-700 transition">COMPANY</a>
-                    <a href="#works" class="hover:text-blue-700 transition">WORKS</a>
-                    <a href="#contact" class="hover:text-blue-700 transition">CONTACT</a>
-                </div>
+<body>
 
-                <!-- 모바일 메뉴 버튼 -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
-                        <i class="fa-solid fa-bars text-2xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
+<!-- NAVIGATION -->
 
-        <!-- 모바일 드롭다운 메뉴 (클릭 시 닫히도록 처리됨) -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b px-4 py-6 space-y-4 shadow-lg text-center font-bold">
-            <a href="#home" onclick="closeMenu()" class="block py-2 text-gray-800 hover:text-blue-700">HOME</a>
-            <a href="#company" onclick="closeMenu()" class="block py-2 text-gray-800 hover:text-blue-700">COMPANY</a>
-            <a href="#works" onclick="closeMenu()" class="block py-2 text-gray-800 hover:text-blue-700">WORKS</a>
-            <a href="#contact" onclick="closeMenu()" class="block py-2 text-gray-800 hover:text-blue-700">CONTACT</a>
-        </div>
-    </nav>
+<nav id="navbar" class="fixed top-0 w-full z-50">
 
-    <!-- 1. Home Section (슬로건/도트 제거, 사진 비율 최적화) -->
-    <!-- PC: 1920x1200 비율을 유지하기 위해 aspect-[16/10] 적용 및 최대 넓이 제한 -->
-    <section id="home" class="relative pt-16 md:pt-20 bg-gray-100 group">
-        <div class="max-w-[1920px] mx-auto overflow-hidden relative h-[75vh] md:h-auto md:aspect-[16/10]">
-            <!-- 사진 리스트 (경로 그대로 유지) -->
-            <div class="fade-slide active h-full"><img src="./01.image/main-bg-01.jpg" class="w-full h-full object-contain md:object-cover object-bottom bg-gray-200"></div>
-            <div class="fade-slide h-full"><img src="./01.image/main-bg-01-1.jpg" class="w-full h-full object-contain md:object-cover object-bottom bg-gray-200"></div>
-            <div class="fade-slide h-full"><img src="./01.image/main-bg-02.jpg" class="w-full h-full object-contain md:object-cover object-bottom bg-gray-200"></div>
-            <div class="fade-slide h-full"><img src="./01.image/main-bg-03.jpg" class="w-full h-full object-contain md:object-cover object-bottom bg-gray-200"></div>
-            <div class="fade-slide h-full"><img src="./01.image/main-bg-03-1.jpg" class="w-full h-full object-contain md:object-cover object-bottom bg-gray-200"></div>
-            <div class="fade-slide h-full"><img src="./01.image/main-bg-04.jpg" class="w-full h-full object-contain md:object-cover object-bottom bg-gray-200"></div>
-            <div class="fade-slide h-full"><img src="./01.image/main-bg-04-1.jpg" class="w-full h-full object-contain md:object-cover object-bottom bg-gray-200"></div>
-            <div class="fade-slide h-full"><img src="./01.image/main-bg-05.jpg" class="w-full h-full object-contain md:object-cover object-bottom bg-gray-200"></div>
-            <div class="fade-slide h-full"><img src="./01.image/main-bg-06.jpg" class="w-full h-full object-contain md:object-cover object-bottom bg-gray-200"></div>
-            <div class="fade-slide h-full"><img src="./01.image/main-bg-07.jpg" class="w-full h-full object-contain md:object-cover object-bottom bg-gray-200"></div>
-            <div class="fade-slide h-full"><img src="./01.image/main-bg-09.jpg" class="w-full h-full object-contain md:object-cover object-bottom bg-gray-200"></div>
+<div class="max-w-7xl mx-auto px-6">
 
-            <!-- 좌우 화살표 (모바일에서도 보이게 수정) -->
-            <button onclick="plusSlides(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/50 text-white w-10 h-10 md:w-14 md:h-14 rounded-full transition-all z-30 flex items-center justify-center">
-                <i class="fa-solid fa-chevron-left md:text-2xl"></i>
-            </button>
-            <button onclick="plusSlides(1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/50 text-white w-10 h-10 md:w-14 md:h-14 rounded-full transition-all z-30 flex items-center justify-center">
-                <i class="fa-solid fa-chevron-right md:text-2xl"></i>
-            </button>
-        </div>
-    </section>
+<div class="flex justify-between h-16 items-center">
 
-    <!-- 2. Company Section -->
-    <section id="company" class="relative py-20 md:py-32 bg-fixed bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920');">
-        <div class="absolute inset-0 bg-white/90 md:bg-white/80"></div>
-        <div class="relative max-w-4xl mx-auto px-6 md:px-0">
-            <h2 class="text-xl md:text-3xl font-bold mb-12 md:mb-16 text-gray-900 leading-snug tracking-tight">Real value begins with<br class="md:hidden"> reasonable decisions</h2>
-            
-            <div class="space-y-12 md:space-y-16 text-sm md:text-lg leading-relaxed text-gray-700 text-justify md:text-left">
-                <div>
-                    <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4 tracking-tight">Value</h3>
-                    <p class="font-light italic">"모든 건물은 누군가의 가치에서 시작됩니다. 하나의 건물 뒤에는 오랜 시간의 노력과 투자, 그리고 소중한 자산이 담겨 있습니다. 우리가 짓는 것은 단순한 콘크리트와 철골이 아니라 고객이 쌓아온 가치입니다..."</p>
-                    <p class="mt-4 font-light">오늘 우리가 쌓아 올린 가치는 결국 우리가 함께 만들어 갈 미래가 됩니다.</p>
-                </div>
-                <div>
-                    <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4 tracking-tight">Reasonability</h3>
-                    <p class="font-light">그 가치를 제대로 만들기 위해서는 건설 과정의 모든 의사결정이 합리적이어야 합니다. 우리는 건설의 결과만큼이나 그 과정이 중요하다고 생각합니다. 좋은 건물은 우연히 만들어지는 것이 아니라 수많은 합리적인 판단들이 쌓여 만들어진 결과이기 때문입니다...</p>
-                </div>
-                <div>
-                    <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4 tracking-tight">Communication</h3>
-                    <p class="font-light">우리가 생각하는 합리적인 건설은 결국 충분한 소통에서 시작됩니다. 고객과 설계사, 협력사와 열린 대화를 나누고 서로의 관점을 이해할 때 비로소 더 나은 판단에 가까워질 수 있다고 믿습니다...</p>
-                </div>
-                <div class="pt-10 text-right">
-                    <p class="text-lg md:text-xl font-bold text-gray-900 underline underline-offset-8">대표이사 김태민</p>
-                    <p class="text-xs text-gray-400 mt-4">(서명 이미지 자리)</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<div id="logo" class="text-xl font-bold text-white">
+(주)대상종합건설
+</div>
 
-    <!-- 3. Works Section -->
-    <section id="works" class="py-20 md:py-24 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="mb-12 md:mb-16 border-l-0 md:border-l-4 border-gray-900 md:pl-6">
-                <h2 class="text-3xl font-bold mb-6 italic tracking-tighter">WORKS</h2>
-                <p class="max-w-3xl text-gray-600 leading-relaxed font-medium text-sm md:text-base">
-                    (주)대상종합건설은 구조물 설치부터 일반 신축공사까지 건설의 다양한 범위를 수행할 수 있는 경험과 역량을 보유하고 있습니다.<br class="hidden md:block">
-                    지난 십수년에 걸쳐 상업시설, 주거시설, 반도체 공장, 물류창고 등 다양한 용도의 건축물을 책임있게 완성해 왔습니다.
-                </p>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
-                <a href="works.html" class="group relative overflow-hidden bg-white aspect-[4/3] shadow-md">
-                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gray-900/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                        <h3 class="text-white text-lg font-bold">OOO 상업시설 신축공사</h3>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
+<div class="hidden md:flex space-x-8 text-white text-sm font-semibold">
 
-    <!-- 4. Contact Section (지도 제거) -->
-    <section id="contact" class="py-20 md:py-24 bg-white border-t">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-2xl font-bold mb-12 tracking-tight">CONTACT</h2>
-            <div class="max-w-2xl">
-                <div class="space-y-10">
-                    <div class="flex flex-col md:flex-row md:items-start">
-                        <h3 class="w-32 text-xs font-bold text-gray-400 mb-2 md:mb-0 uppercase tracking-[0.2em]">Address 1</h3>
-                        <p class="text-base md:text-xl font-medium">서울특별시 무슨구 무슨길 123, 대상빌딩 5층</p>
-                    </div>
-                    <div class="flex flex-col md:flex-row md:items-start border-t pt-8">
-                        <h3 class="w-32 text-xs font-bold text-gray-400 mb-2 md:mb-0 uppercase tracking-[0.2em]">Address 2</h3>
-                        <p class="text-base md:text-xl font-medium">경기도 무슨시 무슨구 무슨길 456</p>
-                    </div>
-                    <div class="pt-8 border-t border-gray-100 space-y-4">
-                        <p class="text-lg md:text-2xl"><span class="font-bold text-gray-400 mr-4">E.</span> contact@daesang.com</p>
-                        <p class="text-lg md:text-2xl"><span class="font-bold text-gray-400 mr-4">T.</span> 02-123-4567</p>
-                    </div>
-                    <div class="flex space-x-6 pt-4">
-                        <a href="#" class="text-3xl text-gray-400 hover:text-pink-600 transition"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<a href="#home">HOME</a>
+<a href="#company">COMPANY</a>
+<a href="#works">WORKS</a>
+<a href="#contact">CONTACT</a>
 
-    <footer class="py-12 text-center text-gray-400 text-[10px] border-t tracking-widest px-6 bg-gray-50">
-        <p>© 2024 (주)대상종합건설. ALL RIGHTS RESERVED.</p>
-    </footer>
+</div>
+
+</div>
+</div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section id="home" class="relative w-full h-screen overflow-hidden">
+
+<div class="absolute inset-0">
+
+<div class="fade-slide active">
+<img src="./01.image/main-bg-01.jpg" class="w-full h-full object-cover">
+</div>
+
+<div class="fade-slide">
+<img src="./01.image/main-bg-02.jpg" class="w-full h-full object-cover">
+</div>
+
+<div class="fade-slide">
+<img src="./01.image/main-bg-03.jpg" class="w-full h-full object-cover">
+</div>
+
+<div class="fade-slide">
+<img src="./01.image/main-bg-04.jpg" class="w-full h-full object-cover">
+</div>
+
+</div>
+
+<div class="absolute inset-0 bg-black/25"></div>
+
+<div class="absolute inset-0 flex items-center justify-center text-center text-white px-6">
+
+<div>
+
+<h1 class="text-3xl md:text-5xl font-light leading-tight">
+
+Real value begins with<br>
+reasonable decisions
+
+</h1>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- COMPANY -->
+
+<section id="company" class="py-24 max-w-4xl mx-auto px-6">
+
+<h2 class="text-3xl font-bold mb-10">
+
+COMPANY
+
+</h2>
+
+<p class="text-gray-600 leading-relaxed">
+
+우리는 모든 건물이 누군가의 가치에서 시작된다고 생각합니다.
+
+하나의 건물 뒤에는 오랜 시간의 노력과 투자, 그리고 소중한 자산이 담겨 있습니다.
+
+우리가 짓는 것은 단순한 콘크리트와 철골이 아니라 고객이 쌓아온 가치입니다.
+
+</p>
+
+</section>
+
+
+<!-- WORKS -->
+
+<section id="works" class="py-24 bg-gray-50">
+
+<div class="max-w-7xl mx-auto px-6">
+
+<h2 class="text-3xl font-bold mb-12">
+
+WORKS
+
+</h2>
+
+<div class="grid md:grid-cols-3 gap-6">
+
+<div class="overflow-hidden">
+
+<img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800"
+class="w-full h-[260px] object-cover">
+
+</div>
+
+<div class="overflow-hidden">
+
+<img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800"
+class="w-full h-[260px] object-cover">
+
+</div>
+
+<div class="overflow-hidden">
+
+<img src="https://images.unsplash.com/photo-1581093458791-9d09d6e6c4f6?auto=format&fit=crop&w=800"
+class="w-full h-[260px] object-cover">
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact" class="py-24">
+
+<div class="max-w-5xl mx-auto px-6">
+
+<h2 class="text-3xl font-bold mb-10">
+
+CONTACT
+
+</h2>
+
+<p class="text-lg">
+서울특별시 ○○구 ○○로 123
+</p>
+
+<p class="mt-4">
+T. 02-123-4567
+</p>
+
+</div>
+
+</section>
+
 
 <script>
-    // 1. 모바일 메뉴 토글 및 닫기 로직
-    const btn = document.getElementById('mobile-menu-button');
-    const menu = document.getElementById('mobile-menu');
-    
-    btn.addEventListener('click', () => {
-        menu.classList.toggle('hidden');
-    });
 
-    function closeMenu() {
-        menu.classList.add('hidden');
-    }
+const nav=document.getElementById("navbar");
+const logo=document.getElementById("logo");
 
-    // 2. 슬라이더 로직 (점 제거 버전)
-    let slideIndex = 1;
-    let slideTimer;
+window.addEventListener("scroll",()=>{
 
-    function showSlides(n) {
-        let i;
-        let slides = document.getElementsByClassName("fade-slide");
-        
-        if (n > slides.length) { slideIndex = 1; }    
-        if (n < 1) { slideIndex = slides.length; }
-        
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";  
-            slides[i].classList.remove("active");
-        }
-        
-        slides[slideIndex-1].style.display = "block";  
-        setTimeout(() => {
-            slides[slideIndex-1].classList.add("active");
-        }, 10);
-    }
+if(window.scrollY>80){
 
-    function plusSlides(n) {
-        showSlides(slideIndex += n);
-        resetTimer();
-    }
+nav.classList.add("nav-scrolled");
 
-    function autoSlide() {
-        slideTimer = setInterval(() => {
-            plusSlides(1);
-        }, 5000);
-    }
+nav.querySelectorAll("a").forEach(el=>{
+el.style.color="#111";
+});
 
-    function resetTimer() {
-        clearInterval(slideTimer);
-        autoSlide();
-    }
+logo.style.color="#111";
 
-    // 초기 실행
-    showSlides(slideIndex);
-    autoSlide();
+}else{
+
+nav.classList.remove("nav-scrolled");
+
+nav.querySelectorAll("a").forEach(el=>{
+el.style.color="white";
+});
+
+logo.style.color="white";
+
+}
+
+});
+
+
+let slideIndex=0;
+
+const slides=document.querySelectorAll(".fade-slide");
+
+function showSlides(){
+
+slides.forEach(s=>s.classList.remove("active"));
+
+slideIndex++;
+
+if(slideIndex>slides.length){
+slideIndex=1;
+}
+
+slides[slideIndex-1].classList.add("active");
+
+setTimeout(showSlides,5000);
+
+}
+
+showSlides();
+
 </script>
+
 </body>
+
 </html>
