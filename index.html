@@ -52,13 +52,16 @@ border-bottom:1px solid rgba(0,0,0,0.05);
 
 .mobile-menu{
 position:absolute;
-top:70px;
-right:20px;
-background:rgba(255,255,255,0.9);
+top:60px;
+right:15px;
+background:rgba(255,255,255,0.97);
+border:1px solid rgba(0,0,0,0.08);
 backdrop-filter:blur(6px);
-border-radius:10px;
-box-shadow:0 10px 25px rgba(0,0,0,0.15);
+border-radius:12px;
+box-shadow:0 12px 30px rgba(0,0,0,0.18);
+min-width:160px;
 }
+
 
 </style>
 
@@ -100,17 +103,18 @@ box-shadow:0 10px 25px rgba(0,0,0,0.15);
 
 <!-- mobile menu -->
 
-<div id="mobileMenu" class="mobile-menu hidden md:hidden">
-
-<div class="flex flex-col text-center py-4 px-8 space-y-4 font-bold text-sm">
-
-<a href="#home" class="mobileLink">HOME</a>
-<a href="#company" class="mobileLink">COMPANY</a>
-<a href="#works" class="mobileLink">WORKS</a>
-<a href="#contact" class="mobileLink">CONTACT</a>
-
-</div>
-
+<div id="mobileMenu" class="mobile-menu hidden">
+  <div class="flex flex-col text-center py-4 px-6 space-y-3 font-semibold text-sm text-gray-800">
+    
+    <a href="#home" class="mobileLink hover:text-black transition">HOME</a>
+    
+    <a href="#company" class="mobileLink hover:text-black transition">COMPANY</a>
+    
+    <a href="#works" class="mobileLink hover:text-black transition">WORKS</a>
+    
+    <a href="#contact" class="mobileLink hover:text-black transition">CONTACT</a>
+  
+  </div>
 </div>
 
 </nav>
@@ -340,17 +344,33 @@ slides[slideIndex].classList.add("active")
 }
 
 function nextSlide(){
-showSlide(slideIndex+1)
+
+clearInterval(slideTimer);
+showSlide(slideIndex+1);
+startSlideTimer();
+
 }
 
 function prevSlide(){
-showSlide(slideIndex-1)
+
+clearInterval(slideTimer);
+showSlide(slideIndex-1);
+startSlideTimer();
+
 }
 
-setInterval(()=>{
+let slideTimer;
+
+function startSlideTimer(){
+
+slideTimer=setInterval(()=>{
 nextSlide()
 },5000)
 
+}
+
+startSlideTimer();
+  
 </script>
 
 </body>
