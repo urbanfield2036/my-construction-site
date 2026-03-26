@@ -56,10 +56,18 @@ top:60px;
 right:15px;
 background:rgba(255,255,255,0.97);
 border:1px solid rgba(0,0,0,0.08);
-backdrop-filter:blur(6px);
 border-radius:12px;
 box-shadow:0 12px 30px rgba(0,0,0,0.18);
-min-width:160px;
+min-width:170px;
+overflow:hidden;
+transform:translateY(-10px);
+opacity:0;
+transition:all 0.25s ease;
+}
+
+.mobile-menu.show{
+transform:translateY(0);
+opacity:1;
 }
 
 
@@ -277,19 +285,61 @@ CONTACT
 
 /* 모바일 메뉴 */
 
-const menuBtn=document.getElementById("menuBtn")
-const mobileMenu=document.getElementById("mobileMenu")
-const mobileLinks=document.querySelectorAll(".mobileLink")
+<script>
 
-menuBtn.addEventListener("click",()=>{
-mobileMenu.classList.toggle("hidden")
-})
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+const links = document.querySelectorAll(".mobileLink");
 
-mobileLinks.forEach(link=>{
+menuBtn.addEventListener("click", function(e){
+
+e.stopPropagation();
+
+if(mobileMenu.classList.contains("hidden")){
+mobileMenu.classList.remove("hidden");
+
+setTimeout(()=>{
+mobileMenu.classList.add("show");
+},10);
+
+}else{
+
+mobileMenu.classList.remove("show");
+
+setTimeout(()=>{
+mobileMenu.classList.add("hidden");
+},200);
+
+}
+
+});
+
+links.forEach(link=>{
 link.addEventListener("click",()=>{
-mobileMenu.classList.add("hidden")
-})
-})
+mobileMenu.classList.remove("show");
+
+setTimeout(()=>{
+mobileMenu.classList.add("hidden");
+},200);
+});
+});
+
+document.addEventListener("click",function(e){
+
+if(!mobileMenu.contains(e.target) && e.target !== menuBtn){
+
+mobileMenu.classList.remove("show");
+
+setTimeout(()=>{
+mobileMenu.classList.add("hidden");
+},200);
+
+}
+
+});
+
+</script>
+
 
 
 /* 스크롤 nav */
